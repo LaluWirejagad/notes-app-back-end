@@ -2,7 +2,7 @@ const notes = require('./notes');
 
 const addNoteHandler = (request, h) => {
   const { title, tags, body } = request.payload;
-  const id = new Date().now();
+  const id = Date.now().toString();
   const createdAt = new Date().toISOString();
   const updatedAt = createdAt;
   const newNote = {
@@ -62,7 +62,6 @@ const editNoteByIdHandler = (request, h) => {
 
   const { title, tags, body } = request.payload;
   const updatedAt = new Date().toISOString();
-
   const index = notes.findIndex((note) => note.id === id);
 
   if (index !== -1) {
